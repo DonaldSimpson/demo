@@ -112,10 +112,14 @@ pipeline {
   }
   
   // The options directive is for configuration that applies to the whole job.
+  // More details here: https://jenkins.io/doc/book/pipeline/syntax/#options
   options {
     // For example, we'd like to make sure we only keep 10 builds at a time, so
     // we don't fill up our storage!
     buildDiscarder(logRotator(numToKeepStr:'10'))
+    
+    // On failure, retry the entire Pipeline the specified number of times
+    retry(3)
     
     // And we'd really like to be sure that this build doesn't hang forever, so
     // let's time it out after an hour.
