@@ -98,7 +98,7 @@ pipeline {
       sh "echo Yay for this, sending an email..."
       mail(from: "donaldsimpson@gmail.com", 
           to: "donaldsimpson@gmail.com", 
-           subject: "That build passed.",
+           subject: "Build ${BUILD_NUMBER} passed.",
            body: "Nothing to see here, but there could be some really interesting info.")
     }
 
@@ -106,7 +106,7 @@ pipeline {
       sh "echo Boo to that, sending an email..."
       mail(from: "donaldsimpson@gmail.com", 
            to: "donaldsimpson@gmail.com", 
-           subject: "That build failed!", 
+           subject: "Build failed!", 
            body: "Nothing to see here, but an error message may be useful.")
     }
   }
