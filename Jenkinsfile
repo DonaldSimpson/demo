@@ -104,10 +104,10 @@ pipeline {
 
     failure {
       sh "echo Boo to that"
- //     mail(from: "bob@example.com", 
- //          to: "steve@example.com", 
- //          subject: "That build failed!", 
- //          body: "Nothing to see here")
+      mail(from: "bob@example.com", 
+           to: "steve@example.com", 
+           subject: "That build failed!", 
+           body: "Nothing to see here")
     }
   }
   
