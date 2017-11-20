@@ -52,7 +52,7 @@ pipeline {
           
           // This'll output 3.3.3, since that's the Maven version we
           // configured above. Well, once we fix the validation error!
-          sh "mvn -version" 
+          sh "java --version" 
         //}
       }
       
