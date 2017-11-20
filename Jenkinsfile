@@ -60,6 +60,8 @@ pipeline {
       steps {
         echo "This time, we could do something more interesting than a quick sleep..."
         sh "sleep 5"
+        sh 'printenv’
+        sh "sleep 5"
       }
     }
     
