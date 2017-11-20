@@ -113,6 +113,7 @@ pipeline {
     }
     
     success {
+      sh "echo Yay"
 //      mail(from: "bob@example.com", 
 //          to: "donaldsimpson@gmail.com", 
 //           subject: "That build passed.",
@@ -120,6 +121,7 @@ pipeline {
     }
 
     failure {
+      sh "echo Boo"
  //     mail(from: "bob@example.com", 
  //          to: "steve@example.com", 
  //          subject: "That build failed!", 
