@@ -78,7 +78,7 @@ pipeline {
       
       steps {
         echo "This time, the Maven version should be 3.3.9"
-        sh "mvn -version"
+        sh "sleep 5"
       }
     }
     
@@ -114,7 +114,7 @@ pipeline {
     
     success {
       mail(from: "bob@example.com", 
-           to: "steve@example.com", 
+           to: "donaldsimpson@gmail.com", 
            subject: "That build passed.",
            body: "Nothing to see here")
     }
