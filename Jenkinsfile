@@ -95,19 +95,19 @@ pipeline {
     }
     
     success {
-      sh "echo Yay for this"
-      mail(from: "bob@example.com", 
+      sh "echo Yay for this, sending an email..."
+      mail(from: "donaldsimpson@gmail.com", 
           to: "donaldsimpson@gmail.com", 
            subject: "That build passed.",
-           body: "Nothing to see here")
+           body: "Nothing to see here, but there could be some really interesting info.")
     }
 
     failure {
-      sh "echo Boo to that"
-      mail(from: "bob@example.com", 
-           to: "steve@example.com", 
+      sh "echo Boo to that, sending an email..."
+      mail(from: "donaldsimpson@gmail.com", 
+           to: "donaldsimpson@gmail.com", 
            subject: "That build failed!", 
-           body: "Nothing to see here")
+           body: "Nothing to see here, but an error message may be useful.")
     }
   }
   
