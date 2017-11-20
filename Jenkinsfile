@@ -39,6 +39,7 @@ pipeline {
         // like this.
           echo "We're not doing anything particularly special here."
           echo "Which, I guess, is kind of silly."
+          echo "FOO is ${FOO}"
           sh "sleep 5" 
       }
       
@@ -58,6 +59,8 @@ pipeline {
       
       steps {
         echo "This time, we could do something more interesting than a quick sleep..."
+        FOO = "KUNG"
+        echo "FOO is ${FOO}"
         sh "sleep 5"
       }
     }
