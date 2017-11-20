@@ -1,7 +1,8 @@
 // A Declarative Pipeline is defined within a 'pipeline' block.
 pipeline {
 
-  // agent defines where the pipeline will run.
+  // agent defines where the pipeline will run
+  // if you have a slave defined by a label you can use that - e.g. java8 or postgres or whatever
   agent {
     // This also could have been 'agent any' - that has the same meaning.
     label ""
@@ -13,16 +14,10 @@ pipeline {
   
   // The tools directive allows you to automatically install tools configured in
   // Jenkins - note that it doesn't work inside Docker containers currently.
-//  tools {
-    // Here we have pairs of tool symbols (not all tools have symbols, so if you
-    // try to use one from a plugin you've got installed and get an error and the 
-    // tool isn't listed in the possible values, open a JIRA against that tool!)
-    // and installations configured in your Jenkins master's tools configuration.
-//    jdk "jdk8"
-    // Uh-oh, this is going to cause a validation issue! There's no configured
-    // maven tool named "mvn3.3.8"!
-//    maven "mvn3.3.8"
-//  }
+  //  tools {
+  //    jdk "jdk8"
+  //    maven "mvn3.3.8"
+  //  }
   
   environment {
     // Environment variable identifiers need to be both valid bash variable
@@ -42,18 +37,9 @@ pipeline {
       steps {
         // You can use steps that take another block of steps as an argument,
         // like this.
-        //
-        // But wait! Another validation issue! Two, actually! I didn't use the
-        // right type for "time" and had a typo in "unit".
-        //timeout(time: true, uint: 'MINUTES') {
           echo "We're not doing anything particularly special here."
-          echo "Just making sure that we don't take longer than five minutes"
           echo "Which, I guess, is kind of silly."
-          
-          // This'll output 3.3.3, since that's the Maven version we
-          // configured above. Well, once we fix the validation error!
           sh "sleep 5" 
-        //}
       }
       
       // Post can be used both on individual stages and for the entire build.
@@ -69,15 +55,9 @@ pipeline {
     }
     
     stage('second stage') {
-      // You can override tools, environment and agent on each stage if you want.
-     // tools {
-        // Here, we're overriding the original maven tool with a different
-        // version.
-        // maven "mvn3.3.9"
-     // }
       
       steps {
-        echo "This time, the Maven version should be 3.3.9"
+        echo "This time, we could do something more interesting than a quick sleep..."
         sh "sleep 5"
       }
     }
@@ -106,14 +86,15 @@ pipeline {
   }
   
   post {
-    // Always runs. And it runs before any of the other post conditions.
+    // (post is like a Java finally{} block)
+    // post always runs, and it runs before any of the other post conditions.
     always {
       // Let's wipe out the workspace before we finish!
       deleteDir()
     }
     
     success {
-      sh "echo Yay"
+      sh "echo Yay for this"
 //      mail(from: "bob@example.com", 
 //          to: "donaldsimpson@gmail.com", 
 //           subject: "That build passed.",
@@ -121,7 +102,7 @@ pipeline {
     }
 
     failure {
-      sh "echo Boo"
+      sh "echo Boo to that"
  //     mail(from: "bob@example.com", 
  //          to: "steve@example.com", 
  //          subject: "That build failed!", 
