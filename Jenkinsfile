@@ -94,13 +94,13 @@ pipeline {
                     for (int i = 0; i < browsers.size(); ++i) {
                         echo "Testing the ${browsers[i]} browser"
                     }
-                }
+                  }
       }
     }
   }
   
   post {
-    // (post is like a Java finally{} block)
+    // post is like the 'finally' block in Java
     // post always runs, and it runs before any of the other post conditions.
     always {
       // Let's wipe out the workspace before we finish!
