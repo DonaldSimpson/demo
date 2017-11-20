@@ -90,7 +90,7 @@ pipeline {
     stage('testing'){
       steps{
           script {
-                    def browsers = ['chrome', 'firefox', 'vivaldi', 'safari']
+                    def browsers = ['chrome', 'firefox', 'vivaldi', 'safari', 'tor']
                     for (int i = 0; i < browsers.size(); ++i) {
                         echo "Testing the ${browsers[i]} browser"
                     }
