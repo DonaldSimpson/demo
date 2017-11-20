@@ -59,8 +59,6 @@ pipeline {
       
       steps {
         echo "This time, we could do something more interesting than a quick sleep..."
-        FOO = "KUNG"
-        echo "FOO is ${FOO}"
         sh "sleep 5"
       }
     }
