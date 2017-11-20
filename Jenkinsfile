@@ -35,10 +35,10 @@ pipeline {
     stage("first stage") {
       // Every stage must have a steps block containing at least one step.
       steps {
-        // You can use steps that take another block of steps as an argument,
-        // like this.
+        // You can use steps that take another block of steps as an argument.
+          sh "sleep 10" 
           echo "We're not doing anything particularly special here."
-          echo "Which, I guess, is kind of silly."
+          echo "Hello World etc."
           echo "FOO is ${FOO}"
           sh "sleep 5" 
       }
@@ -96,10 +96,10 @@ pipeline {
     
     success {
       sh "echo Yay for this"
-//      mail(from: "bob@example.com", 
-//          to: "donaldsimpson@gmail.com", 
-//           subject: "That build passed.",
-//           body: "Nothing to see here")
+      mail(from: "bob@example.com", 
+          to: "donaldsimpson@gmail.com", 
+           subject: "That build passed.",
+           body: "Nothing to see here")
     }
 
     failure {
