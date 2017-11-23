@@ -110,7 +110,7 @@ pipeline {
     success {
       sh "echo Yay for this, sending an email..."
       mail(from: "donaldsimpson@gmail.com", 
-          to: "donaldsimpson@gmail.com", 
+          to: "jpikoulas@technasthai.co.uk", 
            subject: "Build ${BUILD_NUMBER} of the ${JOB_NAME} job has passed.",
            body: "Nothing to see here, but there could be some really interesting info.")
     }
@@ -118,7 +118,7 @@ pipeline {
     failure {
       sh "echo Boo to that, sending an email..."
       mail(from: "donaldsimpson@gmail.com", 
-           to: "donaldsimpson@gmail.com", 
+           to: "jpikoulas@technasthai.co.uk", 
            subject: "Build ${BUILD_NUMBER} of the ${JOB_NAME} job has failed.",
            body: "Nothing to see here, but an error message may be useful.")
     }
